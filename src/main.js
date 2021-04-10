@@ -50,22 +50,22 @@ Apify.main(async () => {
         let { placeId, placeUrl, searchUrl, city, country, category, searchString } = search;
         
         /******  Get redirect url   *****************/
-        try {
-            await page.goto(placeUrl, {
-                waitUntil: "networkidle0",
-                timeout: 0,
-              });
-              const redirectUrl = await page.url();
-              placeUrl=redirectUrl;
-              console.log("***** redirectUrl === ",redirectUrl);
-              console.log("***** placeUrl    === ",placeUrl);
-        } catch (error) {
-            console.log(error);
-        }
+        // try {
+        //     await page.goto(placeUrl, {
+        //         waitUntil: "networkidle0",
+        //         timeout: 0,
+        //       });
+        //       const redirectUrl = await page.url();
+        //       placeUrl=redirectUrl;
+        //       console.log("***** redirectUrl === ",redirectUrl);
+        //       console.log("***** placeUrl    === ",placeUrl);
+        // } catch (error) {
+        //     // console.log(error);
+        // }
         
 
-        // const url = `${searchString ? 'https://www.google.com/maps/search/' : searchUrl}`;
-        const url = `${searchString ? 'https://www.google.com/maps/search/' : placeUrl}`;
+        const url = `${searchString ? 'https://www.google.com/maps/search/' : searchUrl}`;
+        // const url = `${searchString ? 'https://www.google.com/maps/search/' : placeUrl}`;
         console.log("*****     Url     === ",url);
         const uniqueKey = getValidKey({
             str: searchString || searchUrl.replace(/(http[s]?:\/\/www.google.(.*)\/maps\/place\/)/g, ''),
