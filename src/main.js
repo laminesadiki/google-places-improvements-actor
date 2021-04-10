@@ -47,7 +47,7 @@ Apify.main(async () => {
 
 
     for (const search of searchesArray) {
-        const { placeId, placeUrl, searchUrl, city, country, category, searchString } = search;
+        let { placeId, placeUrl, searchUrl, city, country, category, searchString } = search;
         
         /******  Get redirect url   *****************/
         await page.goto(placeUrl, {
@@ -55,7 +55,9 @@ Apify.main(async () => {
           timeout: 0,
         });
         const redirectUrl = await page.url();
+        placeUrl=redirectUrl;
         console.log("***** redirectUrl === ",redirectUrl);
+        console.log("***** placeUrl === ",placeUrl);
 
         const url = `${searchString ? 'https://www.google.com/maps/search/' : searchUrl}`;
         const uniqueKey = getValidKey({
@@ -69,8 +71,8 @@ Apify.main(async () => {
             userData: {
                 label,
                 placeId,
-                // placeUrl,
-                redirectUrl,
+                placeUrl,
+                // redirectUrl,
                 city,
                 country,
                 category,
