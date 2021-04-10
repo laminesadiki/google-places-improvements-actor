@@ -55,6 +55,7 @@ Apify.main(async () => {
           timeout: 0,
         });
         const redirectUrl = await page.url();
+        console.log("***** redirectUrl === ",redirectUrl);
 
         const url = `${searchString ? 'https://www.google.com/maps/search/' : searchUrl}`;
         const uniqueKey = getValidKey({
