@@ -121,9 +121,16 @@ const readAndValidateSpreadsheet = async (spreadsheetId, publicSpreadsheet,page)
         let { 'Google Place ID': placeId, 'Google Place URL': placeUrl, City, Country, Category } = data[i];
 
         if (placeId) {
+            let SearchUrlWithPlaceId =  `https://www.google.com/maps/search/?api=1&query=${placeId.replace(/\s+/g, '')}&query_place_id=${placeId}`;
+            await page.goto(SearchUrlWithPlaceId, {
+                waitUntil: "networkidle0",
+                timeout: 0,
+            });
+            const redirectUrl1 = await page.url();
             searchesArray.push({
                 placeId,
-                searchUrl: `https://www.google.com/maps/search/?api=1&query=${placeId.replace(/\s+/g, '')}&query_place_id=${placeId}`,
+                searchUrl: redirectUrl1,
+                // searchUrl: `https://www.google.com/maps/search/?api=1&query=${placeId.replace(/\s+/g, '')}&query_place_id=${placeId}`,
             });
         } else if (placeUrl) {
             const m = placeUrl.match(/http[s]?:\/\/www.google.(.*)\/maps\//g)
@@ -138,13 +145,11 @@ const readAndValidateSpreadsheet = async (spreadsheetId, publicSpreadsheet,page)
                 timeout: 0,
             });
             const redirectUrl = await page.url();
-            placeUrl=redirectUrl;
-            console.log("***** redirectUrl === ",redirectUrl);
-            console.log("***** placeUrl    === ",placeUrl);
 
             searchesArray.push({
                 placeUrl,
-                searchUrl: placeUrl,
+                searchUrl: redirectUrl,
+                // searchUrl: placeUrl,
             });
         } else {
             if (!Category || !Country) {
