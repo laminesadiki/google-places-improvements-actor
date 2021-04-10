@@ -9,6 +9,9 @@ const { log } = Apify.utils;
 
 
 Apify.main(async () => {
+    const browser = await Apify.launchPuppeteer();
+    const page = await browser.newPage();
+
     const input = await Apify.getValue('INPUT');
 
     const {
@@ -47,8 +50,6 @@ Apify.main(async () => {
         const { placeId, placeUrl, searchUrl, city, country, category, searchString } = search;
         
         /******  Get redirect url   *****************/
-        const browser = await Apify.launchPuppeteer();
-        const page = await browser.newPage();
         await page.goto(placeUrl, {
           waitUntil: "networkidle0",
           timeout: 0,
