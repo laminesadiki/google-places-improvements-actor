@@ -41,7 +41,7 @@ Apify.main(async () => {
 
     const startRequests = [];
 
-    const searchesArray = await readAndValidateSpreadsheet(spreadsheetId, publicSpreadsheet);
+    const searchesArray = await readAndValidateSpreadsheet(spreadsheetId, publicSpreadsheet,page);
     // console.log("***********  searchesArray   **************");
     // console.log(searchesArray);
 

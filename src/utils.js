@@ -101,7 +101,7 @@ function shuffle(a) {
     return a;
 }
 
-const readAndValidateSpreadsheet = async (spreadsheetId, publicSpreadsheet) => {
+const readAndValidateSpreadsheet = async (spreadsheetId, publicSpreadsheet,page) => {
     const actorRun = await Apify.call('lukaskrivka/google-sheets', {
         mode: 'read',
         spreadsheetId,
@@ -118,7 +118,7 @@ const readAndValidateSpreadsheet = async (spreadsheetId, publicSpreadsheet) => {
 
     const searchesArray = [];
     for (let i = 0; i < data.length; i++) {
-        const { 'Google Place ID': placeId, 'Google Place URL': placeUrl, City, Country, Category } = data[i];
+        let { 'Google Place ID': placeId, 'Google Place URL': placeUrl, City, Country, Category } = data[i];
 
         if (placeId) {
             searchesArray.push({
@@ -131,6 +131,17 @@ const readAndValidateSpreadsheet = async (spreadsheetId, publicSpreadsheet) => {
             if (!m) {
                 throw Error(`Wrong URL in the spreadsheet (${spreadsheetId}): row=${i + 2}, Place URL=${placeUrl}`);
             }
+            
+
+            await page.goto(placeUrl, {
+                waitUntil: "networkidle0",
+                timeout: 0,
+            });
+            const redirectUrl = await page.url();
+            placeUrl=redirectUrl;
+            console.log("***** redirectUrl === ",redirectUrl);
+            console.log("***** placeUrl    === ",placeUrl);
+
             searchesArray.push({
                 placeUrl,
                 searchUrl: placeUrl,
