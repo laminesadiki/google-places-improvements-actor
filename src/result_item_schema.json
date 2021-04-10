@@ -1,0 +1,96 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "title",
+    "rating",
+    "categoryName",
+    "address",
+    "plusCode",
+    "reviewsNumber",
+    "claimed",
+    "url"
+  ],
+  "properties": {
+    "title": {
+      "$id": "#/properties/title",
+      "type": "string",
+      "title": "The Title Schema",
+      "default": "",
+      "examples": [
+        "Bank DLR Station"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "rating": {
+      "$id": "#/properties/rating",
+      "type": "number",
+      "title": "The Rating Schema",
+      "default": 0.0,
+      "examples": [
+        3.4
+      ]
+    },
+    "category": {
+      "$id": "#/properties/category",
+      "type": "string",
+      "title": "The Category Schema",
+      "default": "",
+      "examples": [
+        "Stanice úzkokolejné dráhy"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "address": {
+      "$id": "#/properties/address",
+      "type": "string",
+      "title": "The Address Schema",
+      "default": "",
+      "examples": [
+        "Cornhill, London EC3V 3NR, Velká Británie"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "plusCode": {
+      "$id": "#/properties/plusCode",
+      "type": "string",
+      "title": "The Pluscode Schema",
+      "default": "",
+      "examples": [
+        "GW76+6H City, London, Velká Británie"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "reviewsNumber": {
+      "$id": "#/properties/reviewsNumber",
+      "type": "integer",
+      "title": "The ReviewsNumber Schema",
+      "default": 0,
+      "examples": [
+        84
+      ]
+    },
+    "claimed": {
+      "$id": "#/properties/claimed",
+      "type": "integer",
+      "title": "The Claimed Schema",
+      "default": true,
+      "examples": [
+        true
+      ]
+    },
+    "url": {
+      "$id": "#/properties/url",
+      "type": "string",
+      "title": "The Url Schema",
+      "default": "",
+      "examples": [
+        "https://www.google.com/maps/place/Bank+DLR+Station/@51.5131071,-0.0907444,17z/data=!3m1!4b1!4m5!3m4!1s0x487603549b941c59:0xfa641eadd72bb1e2!8m2!3d51.5131071!4d-0.0885557"
+      ],
+      "pattern": "^(.*)$"
+    }
+  }
+}
