@@ -57,9 +57,10 @@ Apify.main(async () => {
         const redirectUrl = await page.url();
         placeUrl=redirectUrl;
         console.log("***** redirectUrl === ",redirectUrl);
-        console.log("***** placeUrl === ",placeUrl);
+        console.log("***** placeUrl    === ",placeUrl);
 
         const url = `${searchString ? 'https://www.google.com/maps/search/' : searchUrl}`;
+        console.log("*****     Url     === ",url);
         const uniqueKey = getValidKey({
             str: searchString || searchUrl.replace(/(http[s]?:\/\/www.google.(.*)\/maps\/place\/)/g, ''),
             replaceChar: '_',
