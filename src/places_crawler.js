@@ -340,6 +340,7 @@ const extractPlaceDetail = async ({ page, request }) => {
     let tags={};
     let arr=[];
     let refineReviews;
+    let starsPerReviews;
     // await page.waitForSelector("button.gm2-button-alt");
     if(await page.$("button.gm2-button-alt")!= null){
     // await page.click("button.gm2-button-alt");
@@ -370,6 +371,20 @@ const extractPlaceDetail = async ({ page, request }) => {
     listRefine.pop()
     refineReviews = {...listRefine};
 
+    // Get stars per number of reviews
+    let reviewsArray = await page.evaluate(() => {
+        let reviewsDomList = [...document.querySelectorAll("tr.jqnFjrOWMVU__histogram")];
+        let reviews = reviewsDomList.map(el => {
+            let str =  el.getAttribute("aria-label");
+            let list = str.split(",");
+            let obj = {[list[0]]:list[1]};
+            return obj;
+        });
+    });
+    
+
+    starsPerReviews = Object.assign({},...reviewsArray);
+
 }
 //************************************
 
@@ -397,6 +412,7 @@ const extractPlaceDetail = async ({ page, request }) => {
     } = detail;
     const result = {
         business_status,
+        starsPerReviews,
         placeId,
         placeUrl,
         location,
