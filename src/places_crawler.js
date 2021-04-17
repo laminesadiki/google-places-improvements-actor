@@ -285,7 +285,13 @@ const extractPlaceDetail = async ({ page, request }) => {
     if (highlightSelector == "Points forts" || highlightSelector == "Highlights" ){
     await page.waitForSelector("div.uDxUUUCO4ji__container");
     let pointsfortsList = await page.$eval("div.uDxUUUCO4ji__container",el => el.innerText.trim().split("\n"));
-    pointsforts={...pointsfortsList}
+    // let pointsfortsList = await page.evaluate(() => {
+    //     let pointsFortsDOM = document.querySelector("div.uDxUUUCO4ji__container").innerText.trim();
+    //     return pointsFortsDOM.split("\n");
+    // });
+    
+    // pointsforts={...pointsfortsList}
+    pointsforts=pointsfortsList;
     // console.log(pointsforts);
     }
 
