@@ -284,6 +284,7 @@ const extractPlaceDetail = async ({ page, request }) => {
     let highlightSelector = await page.$eval("h2.section-subheader-header",el => el.innerText);
     if (highlightSelector == "Points forts" || highlightSelector == "Highlights" ){
     await page.waitForSelector("div.uDxUUUCO4ji__container");
+    await page.waitForNavigation();
     // let pointsfortsList = await page.$eval("div.uDxUUUCO4ji__container",el => el.innerText.trim().split("\n"));
     let pointsfortsList = await page.evaluate(() => {
         let pointsFortsDOM = document.querySelector("div.uDxUUUCO4ji__container").innerText.trim().split("\n");
