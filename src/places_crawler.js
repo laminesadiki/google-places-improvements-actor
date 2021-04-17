@@ -604,6 +604,8 @@ Google shows the web page in a language different from allowed language ${langua
                     log.info(`Extracting details from place url ${page.url()}`);
                     const placeDetail = await extractPlaceDetail({
                         page,
+                        requestQueue,
+                        input,
                         request,
                     });
                     await Apify.pushData(placeDetail);
