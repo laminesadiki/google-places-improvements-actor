@@ -380,6 +380,7 @@ const extractPlaceDetail = async ({ page, request }) => {
             let obj = {[list[0]]:list[1]};
             return obj;
         });
+        return reviews;
     });
     
 
