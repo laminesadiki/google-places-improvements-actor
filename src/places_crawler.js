@@ -206,7 +206,12 @@ const extractPlaceDetail = async ({ page, request }) => {
         const showMoreHotelsAdButtonSelector = '.section-hotel-prices-booking-container > button:not([style])';
         const $showMoreButton = await page.$(showMoreHotelsAdButtonSelector);
         if ($showMoreButton) {
-            await page.click(showMoreHotelsAdButtonSelector);
+            try {
+                await page.click(showMoreHotelsAdButtonSelector);
+            } catch (error) {
+                
+            }
+           
         }
         const hotelsAds = await page.evaluate(() => {
             const $adsInfo = $('.section-hotel-prices-section [class*="partner-info"]');
@@ -596,7 +601,7 @@ Google shows the web page in a language different from allowed language ${langua
                         page,
                         requestQueue,
                         input,
-                        request,
+                        request
                     });
                     log.info('Enqueuing places finished.');
                 } else {
