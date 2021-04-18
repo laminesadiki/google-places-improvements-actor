@@ -110,7 +110,7 @@ const extractPlaceDetail = async ({ page, request }) => {
 
         return {
             title: $(placeTitleSel).text().trim(),
-            rating: $('span.section-star-display').eq(0).text().trim(),
+            rating: $('span.fFNwM35iXVH__section-star-display').eq(0).text().trim(),
             // category: $('[jsaction="pane.rating.category"]').text().trim() ,//|| $$('[class="section-rating-term"]').map(el => el.innerText)[1],
             category: $('[jsaction="pane.rating.category"]').text().trim() || categoryHotel ,
             stars : stars,
