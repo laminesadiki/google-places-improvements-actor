@@ -298,8 +298,14 @@ const extractPlaceDetail = async ({ page, request }) => {
 
     // Get numberOfReviews
     let numberOfReviews = await page.evaluate(() => {
-        let reviewsNumber = document.querySelector('button[jsaction="pane.rating.moreReviews"]').innerText;
-        return reviewsNumber;
+        try {
+            let reviewsNumber = document.querySelector('button[jsaction="pane.rating.moreReviews"]').innerText;
+            return reviewsNumber;
+        } catch (error) {
+            return null;
+        }
+
+        
     });
 
 
