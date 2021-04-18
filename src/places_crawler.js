@@ -296,6 +296,12 @@ const extractPlaceDetail = async ({ page, request }) => {
     // console.log(pointsforts);
     }
 
+    // Get numberOfReviews
+    let numberOfReviews = await page.evaluate(() => {
+        let reviewsNumber = document.querySelector('button[jsaction="pane.rating.moreReviews"]').innerText;
+        return reviewsNumber;
+    });
+
 
 
 
@@ -337,12 +343,12 @@ const extractPlaceDetail = async ({ page, request }) => {
             let content = [...el.querySelectorAll("div.section-attribute-group-container > div")].map(el => el.innerText).join(" ;\n ");
             return {[title]:content};
           }));
-  amentiesPlaceObj=arrayToObject(amentiesPlace);
-//   console.log(amentiesPlaceObj);
-  await page.goto(url,{
-    waitUntil:'networkidle0',
-    timeout:0,  
-    });
+        amentiesPlaceObj=arrayToObject(amentiesPlace);
+        //   console.log(amentiesPlaceObj);
+        await page.goto(url,{
+            waitUntil:'networkidle0',
+            timeout:0,  
+        });
 
     }
 
@@ -437,7 +443,8 @@ const extractPlaceDetail = async ({ page, request }) => {
         pointsforts,
         descriptionHotel ,
         rating: rating || null,
-        reviewsNumber: reviewsNumber || null,
+        // reviewsNumber: reviewsNumber || null,
+        reviewsNumber: numberOfReviews || null,
         city: city || null,
         country,
         address: address || null,

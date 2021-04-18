@@ -15,3 +15,6 @@ console.log(ObjReviews);
 // Get Pointsforts from Browser
 let pointsFortsDOM = document.querySelector("div.uDxUUUCO4ji__container").innerText.trim().split("\n");
 
+
+// Get reviewsNumber
+let reviewsNumber = document.querySelector('button[jsaction="pane.rating.moreReviews"]').innerText;
