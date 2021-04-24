@@ -394,7 +394,11 @@ const extractPlaceDetail = async ({ page, request }) => {
 
     // await page.click("button.gm2-button-alt");
     // await page.waitForSelector("button.tuPVDR7ouq5__button");
-    let listRefine=await page.$$eval("button.tuPVDR7ouq5__button", options => options.map(option => option.innerText.split("\n").join(" : ")));
+    let listRefine=await page.$$eval("button.tuPVDR7ouq5__button", options => options.map(option => {
+        let refineList = option.innerText.split("\n");
+        let refineObj = {name : refineList[0],number:refineList[1]};
+        return refineObj;
+     }));
     listRefine.pop()
     refineReviews = {...listRefine};
 
