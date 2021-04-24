@@ -114,7 +114,8 @@ const extractPlaceDetail = async ({ page, request }) => {
             rating: $('span.fFNwM35iXVH__section-star-display').eq(0).text().trim(),
             // category: $('[jsaction="pane.rating.category"]').text().trim() ,//|| $$('[class="section-rating-term"]').map(el => el.innerText)[1],
             category: $('[jsaction="pane.rating.category"]').text().trim() ,
-            stars : $('span[jsaction="pane.rating.moreReviews"]').eq(1).text().trim().match(/(\d+)/g)[0],
+            stars : $('span[jsaction="pane.rating.moreReviews"]').eq(1) ? 
+                    $('span[jsaction="pane.rating.moreReviews"]').eq(1).text().trim().match(/(\d+)/g)[0] : null,
             address,
             business_status : $("span.cX2WmPgCkHi__section-info-hour-text").text().trim(),
             plusCode: $(plusCodeSelector).text().trim(),
@@ -397,15 +398,21 @@ const extractPlaceDetail = async ({ page, request }) => {
     refineReviews = {...listRefine};
 
     // Get stars per number of reviews
+
     let reviewsArray = await page.evaluate(() => {
-        let reviewsDomList = [...document.querySelectorAll("tr.jqnFjrOWMVU__histogram")];
-        let reviews = reviewsDomList.map(el => {
+        try {
+            let reviewsDomList = [...document.querySelectorAll("tr.jqnFjrOWMVU__histogram")];
+            let reviews = reviewsDomList.map(el => {
             let str =  el.getAttribute("aria-label");
             let list = str.split(",");
             let obj = {[list[0]]:list[1].match(/(\d+)/g)[0]};
             return obj;
         });
         return reviews;
+        } catch (error) {
+            return "";
+        }
+        
     });
     
 
