@@ -114,7 +114,7 @@ const extractPlaceDetail = async ({ page, request }) => {
             rating: $('span.fFNwM35iXVH__section-star-display').eq(0).text().trim(),
             // category: $('[jsaction="pane.rating.category"]').text().trim() ,//|| $$('[class="section-rating-term"]').map(el => el.innerText)[1],
             category: $('[jsaction="pane.rating.category"]').text().trim() ,
-            stars : $('span[jsaction="pane.rating.moreReviews"]').eq(1).text().trim(),
+            stars : $('span[jsaction="pane.rating.moreReviews"]').eq(1).text().trim().match(/(\d+)/g)[0],
             address,
             business_status : $("span.cX2WmPgCkHi__section-info-hour-text").text().trim(),
             plusCode: $(plusCodeSelector).text().trim(),
@@ -300,7 +300,7 @@ const extractPlaceDetail = async ({ page, request }) => {
     // Get numberOfReviews
     let numberOfReviews = await page.evaluate(() => {
         try {
-            let reviewsNumber = document.querySelector('button[jsaction="pane.rating.moreReviews"]').innerText;
+            let reviewsNumber = document.querySelector('button[jsaction="pane.rating.moreReviews"]').innerText.match(/(\d+)/g)[0];
             return reviewsNumber;
         } catch (error) {
             return null;
@@ -402,7 +402,7 @@ const extractPlaceDetail = async ({ page, request }) => {
         let reviews = reviewsDomList.map(el => {
             let str =  el.getAttribute("aria-label");
             let list = str.split(",");
-            let obj = {[list[0]]:list[1]};
+            let obj = {[list[0]]:list[1].match(/(\d+)/g)[0]};
             return obj;
         });
         return reviews;
