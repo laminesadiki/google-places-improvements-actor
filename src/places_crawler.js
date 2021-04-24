@@ -102,11 +102,16 @@ const extractPlaceDetail = async ({ page, request }) => {
 
         
         
-        // Get stars of hotêl
-        // let stars;
-        // if([...document.querySelectorAll('[class="section-rating-term"]')].map(el => el.innerText)[1] != null && [...document.querySelectorAll('[class="section-rating-term"]')].map(el => el.innerText)[1].includes("étoiles")){
-        //     stars = [...document.querySelectorAll('[class="section-rating-term"]')].map(el => el.innerText)[1].substring(1).split(" ")[1];
-        // }
+        //Get stars of hotêl
+        let HotelStars = await page.evaluate(() => {
+            try {
+                let stars = [...document.querySelectorAll('span[jsaction="pane.rating.moreReviews"]')][1].innerText.trim().match(/(\d+)/g)[0];
+                return stars;
+            } catch (error) {
+                return "";
+            }    
+        }); 
+       
 
 
         return {
@@ -114,8 +119,7 @@ const extractPlaceDetail = async ({ page, request }) => {
             rating: $('span.fFNwM35iXVH__section-star-display').eq(0).text().trim(),
             // category: $('[jsaction="pane.rating.category"]').text().trim() ,//|| $$('[class="section-rating-term"]').map(el => el.innerText)[1],
             category: $('[jsaction="pane.rating.category"]').text().trim() ,
-            stars : $('span[jsaction="pane.rating.moreReviews"]').eq(1) ? 
-                    $('span[jsaction="pane.rating.moreReviews"]').eq(1).text().trim().match(/(\d+)/g)[0] : null,
+            stars : HotelStars,       
             address,
             business_status : $("span.cX2WmPgCkHi__section-info-hour-text").text().trim(),
             plusCode: $(plusCodeSelector).text().trim(),

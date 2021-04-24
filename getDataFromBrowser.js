@@ -18,3 +18,6 @@ let pointsFortsDOM = document.querySelector("div.uDxUUUCO4ji__container").innerT
 
 // Get reviewsNumber
 let reviewsNumber = document.querySelector('button[jsaction="pane.rating.moreReviews"]').innerText.match(/(\d+)/g)[0];
+
+// Get stars
+let stars = [...document.querySelectorAll('span[jsaction="pane.rating.moreReviews"]')][1].innerText.trim().match(/(\d+)/g)[0];
