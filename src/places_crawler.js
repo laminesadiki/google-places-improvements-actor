@@ -103,16 +103,13 @@ const extractPlaceDetail = async ({ page, request }) => {
         
         
         //Get stars of hotêl
-        let HotelStars = await page.evaluate(() => {
-            try {
-                let stars = [...document.querySelectorAll('span[jsaction="pane.rating.moreReviews"]')][1].innerText.trim().match(/(\d+)/g)[0];
-                return stars;
-            } catch (error) {
-                return "";
-            }    
-        }); 
-       
-
+        let HotelStars;
+        try {
+            HotelStars = [...document.querySelectorAll('span[jsaction="pane.rating.moreReviews"]')][1].innerText.trim().match(/(\d+)/g)[0];
+        } catch (error) {
+            HotelStars="";
+            }   
+        
 
         return {
             title: $(placeTitleSel).text().trim(),
