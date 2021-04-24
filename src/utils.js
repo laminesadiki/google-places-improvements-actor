@@ -126,7 +126,7 @@ const readAndValidateSpreadsheet = async (spreadsheetId, publicSpreadsheet,page)
                 waitUntil: "networkidle0",
                 timeout: 60*1000
             });
-            await page.waitForNavigation({waitUntil :"networkidle0",timeout: 60*1000});
+            await page.waitForNavigation({waitUntil :"networkidle0",timeout: 0});
             const redirectUrl1 = await page.url();
             searchesArray.push({
                 placeId,

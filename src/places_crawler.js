@@ -356,7 +356,7 @@ const extractPlaceDetail = async ({ page, request }) => {
         //   console.log(amentiesPlaceObj);
         await page.goto(url,{
             waitUntil:'networkidle0',
-            timeout:0,  
+            timeout:60*1000,  
         });
 
     }
