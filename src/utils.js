@@ -129,6 +129,7 @@ const readAndValidateSpreadsheet = async (spreadsheetId, publicSpreadsheet,page)
             });
             // await page.waitForNavigation({waitUntil :"networkidle0",timeout: 0});
             const redirectUrl1 = await page.url();
+            console.log("*****     redirectUrl from PlaceId     === ",redirectUrl1);
             searchesArray.push({
                 placeId,
                 searchUrl: redirectUrl1,
@@ -149,6 +150,7 @@ const readAndValidateSpreadsheet = async (spreadsheetId, publicSpreadsheet,page)
             });
             // await page.waitForNavigation({waitUntil :"networkidle0",timeout: 60*1000});
             const redirectUrl = await page.url();
+            console.log("*****     redirectUrl from PlaceUrl     === ",redirectUrl);
 
             searchesArray.push({
                 placeUrl,
