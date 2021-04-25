@@ -293,7 +293,7 @@ const extractPlaceDetail = async ({ page, request }) => {
     let highlightSelector = await page.$eval("h2.section-subheader-header",el => el.innerText);
     if (highlightSelector == "Points forts" || highlightSelector == "Highlights" ){
     await page.waitForSelector("div.uDxUUUCO4ji__container");
-    await page.waitForNavigation({waitUntil :"networkidle0"});
+    await page.waitForNavigation();
     // let pointsfortsList = await page.$eval("div.uDxUUUCO4ji__container",el => el.innerText.trim().split("\n"));
     let pointsfortsList = await page.evaluate(() => {
         let pointsFortsDOM = document.querySelector("div.uDxUUUCO4ji__container").innerText.trim().split("\n");
@@ -325,33 +325,38 @@ const extractPlaceDetail = async ({ page, request }) => {
     let isBtnPlusExist=await page.$("button.section-hotel-details-more");
 
     if(isBtnPlusExist != null){
-    await page.waitForSelector('button.section-hotel-details-more'); 
+    try {
+        await page.waitForSelector('button.section-hotel-details-more'); 
 
-    //  await page.$$eval("button.section-hotel-details-more", el => el.click());
-    await page.$eval("button.section-hotel-details-more", el => el.click());
+        //  await page.$$eval("button.section-hotel-details-more", el => el.click());
+        await page.$eval("button.section-hotel-details-more", el => el.click());
 
-    await page.waitForTimeout(5000);
+        await page.waitForTimeout(5000);
 
-    await page.waitForSelector("div.section-hotel-details-text-all");
-    
+        await page.waitForSelector("div.section-hotel-details-text-all");
+        
         descriptionHotel = await page.evaluate(() => {return [...document.querySelectorAll("div.section-hotel-details-text-all")].map(el => el.innerText).join("\n")});
         // console.log("*********** descriptionHotel 1 ************* \n",descriptionHotel);
+    } catch (error) {
+        descriptionHotel="";
+    }
+    
 
     }
 
 
     // get Place(Restaurant || PlaceTouristique) Description and Details
-    let desciptionPlace;
+    let descriptionPlace;
     let amentiesPlace;
     let amentiesPlaceObj;
     const arrayToObject = (arr) => Object.assign({}, ...arr);
     if(await page.$("button.section-editorial.GLOBAL__gm2-body-2")!= null){
         // await page.click("button.section-editorial.GLOBAL__gm2-body-2");
         // click button to get description & amenties
-        await page.$eval("button.section-editorial.GLOBAL__gm2-body-2",el => el.click());
+        await page.$eval("button.section-editorial.GLOBAL__gm2-body-2,button.section-editorial.gm2-body-2",el => el.click());
         // await page.waitForSelector("span.section-text-description-text");
         await page.waitForTimeout(5000);
-        desciptionPlace= await page.$("span.section-text-description-text")!=null ? await page.$eval("span.section-text-description-text",el => el.innerText) : "";
+        descriptionPlace= await page.$("span.section-text-description-text")!=null ? await page.$eval("span.section-text-description-text",el => el.innerText) : "";
         amentiesPlace = await page.$$eval("div.section-attribute-group.GLOBAL__gm2-body-2",options => options
           .map(el =>{
             let title =el.querySelector("div.section-attribute-group-title").innerText;
@@ -463,7 +468,7 @@ const extractPlaceDetail = async ({ page, request }) => {
         name,
         category: category || (stars ? "Hotel" : null),
         stars : stars || null,
-        desciptionPlace,
+        descriptionPlace,
         amentiesPlace : amentiesPlaceObj,
         pointsforts,
         descriptionHotel ,
