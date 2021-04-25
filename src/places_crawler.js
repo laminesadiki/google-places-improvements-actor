@@ -223,7 +223,7 @@ const extractPlaceDetail = async ({ page, request }) => {
            
         }
         const hotelsAds = await page.evaluate(() => {
-            const $adsInfo = $('.section-hotel-prices-section [class*="partner-info"]');
+            const $adsInfo = $('.section-hotel-prices-section ,[class*="partner-container"]');
             const hotelsAds = [];
             $adsInfo.each((index, el) => {
                 const name = $(el)

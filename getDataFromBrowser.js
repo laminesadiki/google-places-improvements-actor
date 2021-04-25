@@ -32,3 +32,26 @@ let listRefine = refineDomList.map(option => {
 listRefine.pop()
 refineReviews = {...listRefine};
 console.log(refineReviews);
+
+
+// Get hotelsAds
+document.querySelector("button.section-hotel-prices-more-rates-container").click();
+let container = document.querySelector("div.section-hotel-prices-booking-container");
+let elementsDOM = [...container.querySelectorAll("div[class*='partner-container']")];
+let hotelsAdsList = elementsDOM.map(el => {
+   let name = el.querySelector("span[class*='partner-name']").innerText;
+   let price = el.querySelector("button[class*='display-price-button']").innerText;
+   return {[name]:price}
+});
+let hotelsAdsObj = Object.assign({},...hotelsAdsList);
+console.log(hotelsAdsObj);
+
+
+
+
+
+
+
+
+
+

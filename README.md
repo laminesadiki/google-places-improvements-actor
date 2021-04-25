@@ -1,3 +1,14 @@
+# V3 Of Google Places improvements Actor
+
+We will do and fix the following issues :
+* fix dispaly of hotelsAds with name and price .
+* 
+* 
+* 
+
+
+
+
 # V2.8 Of Google Places improvements Actor
 
 We will do and fix the following issues :
