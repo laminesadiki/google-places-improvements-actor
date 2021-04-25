@@ -123,11 +123,11 @@ const readAndValidateSpreadsheet = async (spreadsheetId, publicSpreadsheet,page)
         if (placeId) {
             let SearchUrlWithPlaceId =  `https://www.google.com/maps/search/?api=1&query=${placeId.replace(/\s+/g, '')}&query_place_id=${placeId}`;
             await page.goto(SearchUrlWithPlaceId, {
-                waitUntil: "networkidle0",
+                waitUntil: "networkidle2",
                 // timeout: 60*1000
                 timeout: 0
             });
-            await page.waitForNavigation({waitUntil :"networkidle0",timeout: 2*60*1000});
+            // await page.waitForNavigation({waitUntil :"networkidle0",timeout: 2*60*1000});
             const redirectUrl1 = await page.url();
             console.log("*****     redirectUrl from PlaceId     === ",redirectUrl1);
             searchesArray.push({
