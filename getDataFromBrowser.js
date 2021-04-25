@@ -21,3 +21,14 @@ let reviewsNumber = document.querySelector('button[jsaction="pane.rating.moreRev
 
 // Get stars
 let stars = [...document.querySelectorAll('span[jsaction="pane.rating.moreReviews"]')][1].innerText.trim().match(/(\d+)/g)[0];
+
+// Get RefineReviews
+let refineReviews;
+let refineDomList = [...document.querySelectorAll("button.tuPVDR7ouq5__button")];
+let listRefine = refineDomList.map(option => {
+   let refineList = option.innerText.split("\n");
+   let refineObj = {name : refineList[0],number:refineList[1]};
+   return refineObj;});
+listRefine.pop()
+refineReviews = {...listRefine};
+console.log(refineReviews);

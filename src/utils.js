@@ -124,9 +124,10 @@ const readAndValidateSpreadsheet = async (spreadsheetId, publicSpreadsheet,page)
             let SearchUrlWithPlaceId =  `https://www.google.com/maps/search/?api=1&query=${placeId.replace(/\s+/g, '')}&query_place_id=${placeId}`;
             await page.goto(SearchUrlWithPlaceId, {
                 waitUntil: "networkidle0",
-                timeout: 60*1000
+                // timeout: 60*1000
+                timeout: 0
             });
-            await page.waitForNavigation({waitUntil :"networkidle0",timeout: 0});
+            // await page.waitForNavigation({waitUntil :"networkidle0",timeout: 0});
             const redirectUrl1 = await page.url();
             searchesArray.push({
                 placeId,
@@ -143,9 +144,10 @@ const readAndValidateSpreadsheet = async (spreadsheetId, publicSpreadsheet,page)
 
             await page.goto(placeUrl, {
                 waitUntil: "networkidle0",
-                timeout: 60*1000
+                // timeout: 60*1000
+                timeout: 0
             });
-            await page.waitForNavigation({waitUntil :"networkidle0",timeout: 60*1000});
+            // await page.waitForNavigation({waitUntil :"networkidle0",timeout: 60*1000});
             const redirectUrl = await page.url();
 
             searchesArray.push({
