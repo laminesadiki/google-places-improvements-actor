@@ -24,18 +24,24 @@ function parseCity(detail) {
         return null;
         // throw new Error('Address must be a non-empty string.');
     }
-    const address = unmodifiedAddress.split('\n')[0].replace(/  +/g, ' ');
-    // Assume comma is an intentional delimiter
-    const addressParts = address.split(',');
-    // Remove country
-    addressParts.splice(-1, 1);
-    // Assume the last address section contains city, zip or both
-    let cityString = addressParts[addressParts.length - 1].trim();
-    // Parse and remove zip from the end of string
-    if (cityString.match(/\d{5}$/)) {
-        cityString = cityString.substring(0, cityString.length - 5).trim();
+    let cityString;
+    try {
+        const address = unmodifiedAddress.split('\n')[0].replace(/  +/g, ' ');
+        // Assume comma is an intentional delimiter
+        const addressParts = address.split(',');
+        // Remove country
+        addressParts.splice(-1, 1);
+        // Assume the last address section contains city, zip or both
+        cityString = addressParts[addressParts.length - 1].trim();
+        // Parse and remove zip from the end of string
+        if (cityString.match(/\d{5}$/)) {
+            cityString = cityString.substring(0, cityString.length - 5).trim();
+        }
+        
+    } catch (error) {
+        cityString="";
     }
-
+    
     return cityString;
 }
 
