@@ -122,12 +122,17 @@ const readAndValidateSpreadsheet = async (spreadsheetId, publicSpreadsheet,page)
 
         if (placeId) {
             let SearchUrlWithPlaceId =  `https://www.google.com/maps/search/?api=1&query=${placeId.replace(/\s+/g, '')}&query_place_id=${placeId}`;
-            await page.goto(SearchUrlWithPlaceId, {
-                waitUntil: "networkidle2",
-                // timeout: 60*1000
-                timeout: 0
-            });
-            await page.waitForNavigation({waitUntil:"load",timeout:0});
+            try {
+                await page.goto(SearchUrlWithPlaceId, {
+                    waitUntil: "load",
+                    timeout: 2*60*1000
+                });
+                await page.waitForNavigation({waitUntil:"load",timeout: 2*60*1000});
+            } catch (error) {
+                console.log("**********  Error in naviguation ********");
+                continue;
+            }
+            
             // await page.waitForNavigation({waitUntil :"networkidle0",timeout: 2*60*1000});
             const redirectUrl1 = await page.url();
             console.log("*****     redirectUrl from PlaceId     === ",redirectUrl1);
@@ -142,14 +147,19 @@ const readAndValidateSpreadsheet = async (spreadsheetId, publicSpreadsheet,page)
             if (!m) {
                 throw Error(`Wrong URL in the spreadsheet (${spreadsheetId}): row=${i + 2}, Place URL=${placeUrl}`);
             }
-            
 
-            await page.goto(placeUrl, {
-                waitUntil: "networkidle0",
-                // timeout: 60*1000
-                timeout: 0
-            });
-            // await page.waitForNavigation({waitUntil :"networkidle0",timeout: 60*1000});
+            try {
+                await page.goto(placeUrl, {
+                    waitUntil: "load",
+                    timeout: 2*60*1000
+                });
+                await page.waitForNavigation({waitUntil :"load",timeout: 2*60*1000});
+            } catch (error) {
+                console.log("**********  Error in naviguation ********");
+                continue;
+            }
+
+           
             const redirectUrl = await page.url();
             console.log("*****     redirectUrl from PlaceUrl     === ",redirectUrl);
 
