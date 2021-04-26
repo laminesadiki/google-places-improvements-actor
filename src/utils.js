@@ -101,7 +101,7 @@ function shuffle(a) {
     return a;
 }
 
-const readAndValidateSpreadsheet = async (spreadsheetId, publicSpreadsheet,page1) => {
+const readAndValidateSpreadsheet = async (spreadsheetId, publicSpreadsheet,page) => {
     const actorRun = await Apify.call('lukaskrivka/google-sheets', {
         mode: 'read',
         spreadsheetId,
@@ -122,12 +122,12 @@ const readAndValidateSpreadsheet = async (spreadsheetId, publicSpreadsheet,page1
 
         if (placeId) {
             let SearchUrlWithPlaceId =  `https://www.google.com/maps/search/?api=1&query=${placeId.replace(/\s+/g, '')}&query_place_id=${placeId}`;
-            await page1.goto(SearchUrlWithPlaceId, {
-                waitUntil: "load",
+            await page.goto(SearchUrlWithPlaceId, {
+                waitUntil: "networkidle2",
                 // timeout: 60*1000
                 timeout: 0
             });
-            await page1.waitForNavigation({waitUntil:"load",timeout:0});
+            await page.waitForNavigation({waitUntil:"load",timeout:0});
             // await page.waitForNavigation({waitUntil :"networkidle0",timeout: 2*60*1000});
             const redirectUrl1 = await page.url();
             console.log("*****     redirectUrl from PlaceId     === ",redirectUrl1);
@@ -144,12 +144,12 @@ const readAndValidateSpreadsheet = async (spreadsheetId, publicSpreadsheet,page1
             }
             
 
-            await page1.goto(placeUrl, {
-                waitUntil: "load",
+            await page.goto(placeUrl, {
+                waitUntil: "networkidle0",
                 // timeout: 60*1000
                 timeout: 0
             });
-            await page1.waitForNavigation({waitUntil:"load",timeout:0});
+            // await page.waitForNavigation({waitUntil :"networkidle0",timeout: 60*1000});
             const redirectUrl = await page.url();
             console.log("*****     redirectUrl from PlaceUrl     === ",redirectUrl);
 

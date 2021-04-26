@@ -10,7 +10,7 @@ const { log } = Apify.utils;
 
 Apify.main(async () => {
     const browser = await Apify.launchPuppeteer();
-    const page1 = await browser.newPage();
+    const page = await browser.newPage();
 
     const input = await Apify.getValue('INPUT');
 
@@ -41,7 +41,7 @@ Apify.main(async () => {
 
     const startRequests = [];
 
-    const searchesArray = await readAndValidateSpreadsheet(spreadsheetId, publicSpreadsheet,page1);
+    const searchesArray = await readAndValidateSpreadsheet(spreadsheetId, publicSpreadsheet,page);
     // console.log("***********  searchesArray   **************");
     // console.log(searchesArray);
 
