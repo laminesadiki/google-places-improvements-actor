@@ -124,10 +124,10 @@ const readAndValidateSpreadsheet = async (spreadsheetId, publicSpreadsheet,page)
             let SearchUrlWithPlaceId =  `https://www.google.com/maps/search/?api=1&query=${placeId.replace(/\s+/g, '')}&query_place_id=${placeId}`;
             try {
                 await page.goto(SearchUrlWithPlaceId, {
-                    waitUntil: "load",
+                    waitUntil: "networkidle0",
                     timeout: 2*60*1000
                 });
-                await page.waitForNavigation({waitUntil:"load",timeout: 2*60*1000});
+                await page.waitForNavigation({waitUntil:"networkidle0",timeout: 2*60*1000});
             } catch (error) {
                 console.log("**********  Error in naviguation ********");
                 continue;
@@ -150,10 +150,10 @@ const readAndValidateSpreadsheet = async (spreadsheetId, publicSpreadsheet,page)
 
             try {
                 await page.goto(placeUrl, {
-                    waitUntil: "load",
+                    waitUntil: "networkidle0",
                     timeout: 2*60*1000
                 });
-                await page.waitForNavigation({waitUntil :"load",timeout: 2*60*1000});
+                await page.waitForNavigation({waitUntil :"networkidle0",timeout: 2*60*1000});
             } catch (error) {
                 console.log("**********  Error in naviguation ********");
                 continue;
