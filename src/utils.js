@@ -122,7 +122,7 @@ const readAndValidateSpreadsheet = async (spreadsheetId, publicSpreadsheet,page)
 
         if (placeId) {
             let SearchUrlWithPlaceId =  `https://www.google.com/maps/search/?api=1&query=${placeId.replace(/\s+/g, '')}&query_place_id=${placeId}`;
-            const redirectUrl1;
+            let redirectUrl1;
             try {
                 await page.goto(SearchUrlWithPlaceId, {
                     waitUntil: "networkidle0",
