@@ -27,7 +27,7 @@ let refineReviews;
 let refineDomList = [...document.querySelectorAll("button.tuPVDR7ouq5__button")];
 let listRefine = refineDomList.map(option => {
    let refineList = option.innerText.split("\n");
-   let refineObj = {name : refineList[0],number:refineList[1]};
+   let refineObj = {name : refineList[0],number:(refineList[1] ? refineList[1] : "0")};
    return refineObj;});
 listRefine.pop()
 refineReviews = {...listRefine};

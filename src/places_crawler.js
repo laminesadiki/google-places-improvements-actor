@@ -415,7 +415,7 @@ const extractPlaceDetail = async ({ page, request }) => {
     // await page.waitForSelector("button.tuPVDR7ouq5__button");
     let listRefine=await page.$$eval("button.tuPVDR7ouq5__button", options => options.map(option => {
         let refineList = option.innerText.split("\n");
-        let refineObj = {name : refineList[0],number:refineList[1]};
+        let refineObj = {name : refineList[0],number : (refineList[1] ? refineList[1] : "0")};
         return refineObj;
      }));
     listRefine.pop()
