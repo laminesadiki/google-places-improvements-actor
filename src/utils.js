@@ -149,19 +149,17 @@ const readAndValidateSpreadsheet = async (spreadsheetId, publicSpreadsheet,page)
                 throw Error(`Wrong URL in the spreadsheet (${spreadsheetId}): row=${i + 2}, Place URL=${placeUrl}`);
             }
 
+            let redirectUrl;
             try {
                 await page.goto(placeUrl, {
-                    waitUntil: "networkidle0",
-                    timeout: 2*60*1000
+                    waitUntil: "load"
                 });
-                await page.waitForNavigation({waitUntil :"networkidle0",timeout: 2*60*1000});
+                await page.waitForNavigation({waitUntil :"networkidle0",timeout: 60*1000});
+                redirectUrl = await page.url();
             } catch (error) {
                 console.log("**********  Error in naviguation ********");
-                continue;
+                redirectUrl = placeUrl;
             }
-
-           
-            const redirectUrl = await page.url();
             console.log("*****     redirectUrl from PlaceUrl     === ",redirectUrl);
 
             searchesArray.push({
