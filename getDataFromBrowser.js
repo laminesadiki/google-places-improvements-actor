@@ -1,4 +1,4 @@
-// Reviews Stars with partitions 
+// Reviews Stars with partitions <=> starsPerReviews
 
 let reviewsArrayOlder = [...document.querySelectorAll("tr.jqnFjrOWMVU__histogram")];
 let reviewsArray = [...document.querySelectorAll("tr[class*='histogram']")];
