@@ -7,7 +7,7 @@ let reviews = reviewsArray.map(el => {
    let list = str.split(",");
    let obj = {[list[0]]:list[1].match(/(\d+)/g)[0]};
    return obj;
-})
+});
 
 let ObjReviews = Object.assign({},...reviews);
 

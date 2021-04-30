@@ -413,16 +413,30 @@ const extractPlaceDetail = async ({ page, request }) => {
 
     // await page.click("button.gm2-button-alt");
     // await page.waitForSelector("button.tuPVDR7ouq5__button");
-    let listRefine=await page.$$eval("button.tuPVDR7ouq5__button", options => options.map(option => {
-        let refineList = option.innerText.split("\n");
-        let refineObj = {name : refineList[0],number : (refineList[1] ? refineList[1] : "0")};
-        return refineObj;
-     }));
-    listRefine.pop()
-    refineReviews = {...listRefine};
+    // let listRefine=await page.$$eval("button.tuPVDR7ouq5__button", options => options.map(option => {
+    //     let refineList = option.innerText.split("\n");
+    //     let refineObj = {name : refineList[0],number : (refineList[1] ? refineList[1] : "0")};
+    //     return refineObj;
+    //  }));
+    // listRefine.pop()
+    // refineReviews = {...listRefine};
+
+    // Get refineReviews
+    refineReviews = await page.evaluate(() => {
+        let reviewTags = document.querySelector("div.section-hotel-trip-type-summary,[aria-label*='Affiner les avis'],[aria-label*='Refine reviews']");
+        let refineReviews;
+        let refineDomList = [...reviewTags.querySelectorAll("button[class*='button'")];
+        let listRefine = refineDomList.map(option => {
+            let refineList = option.innerText.split("\n");
+            let refineObj = {name : refineList[0],number:(refineList[1] ? refineList[1] : "0")};
+            return refineObj;
+        });
+        listRefine.pop()
+        refineReviews = {...listRefine};
+        return refineReviews;
+    });
 
     // Get stars per number of reviews <=> starsPerReviews
-
     let reviewsArray = await page.evaluate(() => {
         try {
             let reviewsDomList = [...document.querySelectorAll("tr[class*='histogram']")];
@@ -439,7 +453,6 @@ const extractPlaceDetail = async ({ page, request }) => {
         
     });
     
-
     starsPerReviews = Object.assign({},...reviewsArray);
 
 }
