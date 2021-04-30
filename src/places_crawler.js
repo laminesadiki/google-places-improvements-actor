@@ -494,10 +494,9 @@ const extractPlaceDetail = async ({ page, request }) => {
         name,
         category: category || (stars ? "Hotel" : null),
         stars : stars || null,
-        descriptionPlace,
+        description : descriptionPlace || descriptionHotel || "",
         amentiesPlace : amentiesPlaceObj,
-        pointsforts,
-        descriptionHotel ,
+        pointsforts : pointsforts || null,
         rating: rating || null,
         // reviewsNumber: reviewsNumber || null,
         reviewsNumber: numberOfReviews || null,
@@ -510,8 +509,8 @@ const extractPlaceDetail = async ({ page, request }) => {
         amentiesHotel : amenties,
         claimed,
         searchString,
-        reviewTags : tags || null,
-        refineReviews :refineReviews || null ,
+        // reviewTags : tags || null,
+        refineReviews : refineReviews || null ,
     };
     if (hotelsAds) {
         for (const [name, price] of Object.entries(hotelsAds)) {
