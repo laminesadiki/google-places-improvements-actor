@@ -358,17 +358,17 @@ const extractPlaceDetail = async ({ page, request }) => {
     let amentiesPlace;
     let amentiesPlaceObj;
     const arrayToObject = (arr) => Object.assign({}, ...arr);
-    if(await page.$("button.section-editorial.GLOBAL__gm2-body-2")!= null){
+    if(await page.$("button[class*='section-editorial']")!= null){
         // await page.click("button.section-editorial.GLOBAL__gm2-body-2");
         // click button to get description & amenties
-        await page.$eval("button.section-editorial.GLOBAL__gm2-body-2,button.section-editorial.gm2-body-2",el => el.click());
+        await page.$eval("button[class*='section-editorial']",el => el.click());
         // await page.waitForSelector("span.section-text-description-text");
         await page.waitForTimeout(5000);
         descriptionPlace= await page.$("span.section-text-description-text")!=null ? await page.$eval("span.section-text-description-text",el => el.innerText) : "";
-        amentiesPlace = await page.$$eval("div.section-attribute-group.GLOBAL__gm2-body-2",options => options
+        amentiesPlace = await page.$$eval(".section-attribute-group",options => options
           .map(el =>{
             let title =el.querySelector("div.section-attribute-group-title").innerText;
-            let content = [...el.querySelectorAll("div.section-attribute-group-container > div")].map(el => el.innerText).join(" ;\n ");
+            let content = [...el.querySelectorAll("[class*='section-attribute-group-container'] > li")].map(el => el.innerText).join(" ;\n ");
             return {[title]:content};
           }));
         amentiesPlaceObj=arrayToObject(amentiesPlace);
