@@ -1,12 +1,21 @@
+# V3.5 Of Google Places improvements Actor
+
+We will do and fix the following fields :
+* rating
+* starsPerReviews
+* Business_Status
+* refineReviews
+* reviewTags
+* description
+* amenties
+* 
+
+
 # V3 Of Google Places improvements Actor
 
 We will do and fix the following issues :
 * fix dispaly of hotelsAds with name and price .
 * 
-* 
-* 
-
-
 
 
 # V2.8 Of Google Places improvements Actor
@@ -21,10 +30,10 @@ We will do and fix the following issues :
 ```
 
 
-
 # V2.7 Of Google Places improvements Actor
 
 We will do and fix the following issues :
 * ajouter répartition des avis par note
+* 
 
 
