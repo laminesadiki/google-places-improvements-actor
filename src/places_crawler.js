@@ -423,17 +423,22 @@ const extractPlaceDetail = async ({ page, request }) => {
 
     // Get refineReviews
     refineReviews = await page.evaluate(() => {
-        let reviewTags = document.querySelector("div.section-hotel-trip-type-summary,[aria-label*='Affiner les avis'],[aria-label*='Refine reviews']");
-        let refineReviews;
-        let refineDomList = [...reviewTags.querySelectorAll("button[class*='button'")];
-        let listRefine = refineDomList.map(option => {
-            let refineList = option.innerText.split("\n");
-            let refineObj = {name : refineList[0],number:(refineList[1] ? refineList[1] : "0")};
-            return refineObj;
-        });
-        listRefine.pop()
-        refineReviews = {...listRefine};
-        return refineReviews;
+        try {
+            let reviewTags = document.querySelector("div.section-hotel-trip-type-summary,[aria-label*='Affiner les avis'],[aria-label*='Refine reviews']");
+            let refineReviews;
+            let refineDomList = [...reviewTags.querySelectorAll("button[class*='button'")];
+            let listRefine = refineDomList.map(option => {
+                let refineList = option.innerText.split("\n");
+                let refineObj = {name : refineList[0],number:(refineList[1] ? refineList[1] : "0")};
+                return refineObj;
+            });
+            listRefine.pop()
+            refineReviews = {...listRefine};
+            return refineReviews;
+        } catch (error) {
+            return {}
+        }
+        
     });
 
     // Get stars per number of reviews <=> starsPerReviews
