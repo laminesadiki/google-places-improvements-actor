@@ -396,9 +396,9 @@ const extractPlaceDetail = async ({ page, request }) => {
     // console.log(test);
     // await page.waitForSelector("div.section-hotel-trip-type-summary");
     await page.waitForTimeout(5000);
-    if(await page.$("div.section-hotel-trip-type-summary")!=null){
+    if(await page.$("div.section-hotel-trip-type-summary,[aria-label*='Affiner les avis'],[aria-label*='Refine reviews']")!=null){
     // let tagsarr = document.querySelector("div.section-hotel-trip-type-summary").innerText.split("\n");
-    let tagsarr = await page.$eval("div.section-hotel-trip-type-summary", el => el.innerText.split("\n"));
+    let tagsarr = await page.$eval("div.section-hotel-trip-type-summary,[aria-label*='Affiner les avis'],[aria-label*='Refine reviews']", el => el.innerText.split("\n"));
     // console.log("tagsarr \n",tagsarr);
     
     for(let i=0;i<tagsarr.length;i+2){
