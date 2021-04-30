@@ -32,7 +32,7 @@ let stars = [...document.querySelectorAll('span[jsaction="pane.rating.moreReview
 //Get Rating
 
 let older = document.querySelectorAll('span.fFNwM35iXVH__section-star-display'); 
-let updated = document.querySelectorAll('[class*=section-star-display');
+let updated = document.querySelectorAll("[class*='section-star-display']");
 
 // Get RefineReviews
 let reviewTags = document.querySelector("div.section-hotel-trip-type-summary,[aria-label*='Affiner les avis'],[aria-label*='Refine reviews']");
