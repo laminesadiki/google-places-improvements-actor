@@ -138,7 +138,7 @@ const extractPlaceDetail = async ({ page, request }) => {
             claimed: $(claimedSelector).length === 0,
             selectorsType,
             isHotelsAdsExist: $hotelsAdsContainer.length > 0,
-            amenties : {...[...document.querySelectorAll("div.section-hotel-amenities-hotel-amenity")].map(el =>{ 
+            amentiesHotel : {...[...document.querySelectorAll("div.section-hotel-amenities-hotel-amenity")].map(el =>{ 
                 if(el.hasAttribute("aria-disabled")) return "";
                 else 
                      return el.innerText.trim() ; })},
@@ -465,7 +465,7 @@ const extractPlaceDetail = async ({ page, request }) => {
 
     const {
         business_status,
-        amenties,
+        amentiesHotel,
         placeId,
         url: placeUrl,
         title: name,
@@ -495,7 +495,7 @@ const extractPlaceDetail = async ({ page, request }) => {
         category: category || (stars ? "Hotel" : null),
         stars : stars || null,
         description : descriptionPlace || descriptionHotel || "",
-        amentiesPlace : amentiesPlaceObj,
+        amenties : amentiesPlaceObj || amentiesHotel || null,
         pointsforts : pointsforts || null,
         rating: rating || null,
         // reviewsNumber: reviewsNumber || null,
@@ -506,7 +506,6 @@ const extractPlaceDetail = async ({ page, request }) => {
         plusCode: plusCode || null,
         website: website || null,
         phoneNumber: phoneNumber || null,
-        amentiesHotel : amenties,
         claimed,
         searchString,
         // reviewTags : tags || null,
