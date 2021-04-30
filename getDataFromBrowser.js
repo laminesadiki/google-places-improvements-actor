@@ -68,6 +68,7 @@ let nextBtn = document.querySelector("button[class*='section-editorial']");
 let amentiesPlace = document.querySelectorAll(".section-attribute-group");
 let content = document.querySelectorAll("[class*='section-attribute-group-container'] > li");
 
+//Test pushing
 
 
 
