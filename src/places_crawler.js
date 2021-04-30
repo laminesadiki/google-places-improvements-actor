@@ -124,7 +124,7 @@ const extractPlaceDetail = async ({ page, request }) => {
             category: $('[jsaction="pane.rating.category"]').text().trim() ,
             stars : HotelStars,       
             address,
-            business_status : $("span.cX2WmPgCkHi__section-info-hour-text").text().trim(),
+            business_status : $("span[class*='section-info-hour-text']").text().trim(),
             plusCode: $(plusCodeSelector).text().trim(),
             website: $website.length ? $website.eq('0').text().trim() : null,
             // pointsforts : {...document.querySelector("div.uDxUUUCO4ji__container").innerText.trim().split("\n")},

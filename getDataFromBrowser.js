@@ -61,7 +61,7 @@ console.log(hotelsAdsObj);
 
 // Get Business Status
 let business_status_older = document.querySelectorAll("span.cX2WmPgCkHi__section-info-hour-text");
-let business_status_newer = document.querySelectorAll("span[class*='section-info-hour-text'");
+let business_status_newer = document.querySelectorAll("span[class*='section-info-hour-text']");
 
 // Get description and details
 let nextBtn = document.querySelector("button[class*='section-editorial']");
