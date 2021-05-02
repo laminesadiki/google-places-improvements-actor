@@ -4,8 +4,8 @@ let reviewsArrayOlder = [...document.querySelectorAll("tr.jqnFjrOWMVU__histogram
 let reviewsArray = [...document.querySelectorAll("tr[class*='histogram']")];
 let reviews = reviewsArray.map(el => {
    let str =  el.getAttribute("aria-label");
-   let list = str.split(",");
-   let obj = {[list[0]]:list[1].match(/(\d+)/g)[0]};
+   let list = str.split(", ");
+   let obj = {[list[0]]:list[1].match(/(\d+,?)+/g)[0]};
    return obj;
 });
 
@@ -24,7 +24,7 @@ let pointsFortsDOM = document.querySelector("div.uDxUUUCO4ji__container").innerT
 
 
 // Get reviewsNumber
-let reviewsNumber = document.querySelector('button[jsaction="pane.rating.moreReviews"]').innerText.match(/(\d+)/g)[0];
+let reviewsNumber = document.querySelector('button[jsaction="pane.rating.moreReviews"]').innerText.match(/(\d+,?)+/g)[0];
 
 // Get stars for Hotel
 let stars = [...document.querySelectorAll('span[jsaction="pane.rating.moreReviews"]')][1].innerText.trim().match(/(\d+)/g)[0];

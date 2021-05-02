@@ -316,7 +316,7 @@ const extractPlaceDetail = async ({ page, request }) => {
     // Get numberOfReviews
     let numberOfReviews = await page.evaluate(() => {
         try {
-            let reviewsNumber = document.querySelector('button[jsaction="pane.rating.moreReviews"]').innerText.match(/(\d+)/g)[0];
+            let reviewsNumber = document.querySelector('button[jsaction="pane.rating.moreReviews"]').innerText.match(/(\d+,?)+/g)[0];
             return reviewsNumber;
         } catch (error) {
             return null;
@@ -447,8 +447,8 @@ const extractPlaceDetail = async ({ page, request }) => {
             let reviewsDomList = [...document.querySelectorAll("tr[class*='histogram']")];
             let reviews = reviewsDomList.map(el => {
             let str =  el.getAttribute("aria-label");
-            let list = str.split(",");
-            let obj = {[list[0]]:list[1].match(/(\d+)/g)[0]};
+            let list = str.split(", ");
+            let obj = {[list[0]]:list[1].match(/(\d+,?)+/g)[0]};
             return obj;
         });
         return reviews;
