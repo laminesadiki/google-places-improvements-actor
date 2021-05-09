@@ -109,7 +109,8 @@ const enqueueAllPlaceDetails = async ({ page, requestQueue, input, request }) =>
     // In case there is a list of details, it goes through details, limits by maxPlacesPerCrawl
     const nextButtonSelector = '[jsaction="pane.paginationSection.nextPage"]';
     while (true) {
-        const noResultsEl = await page.$('.section-no-result-title');
+        // const noResultsEl = await page.$('.section-no-result-title');
+        const noResultsEl = await page.$('[class*="_section-no-result"]');
         if (noResultsEl) {
             break;
         }
