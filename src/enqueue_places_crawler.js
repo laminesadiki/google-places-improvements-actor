@@ -114,7 +114,8 @@ const enqueueAllPlaceDetails = async ({ page, requestQueue, input, request }) =>
             break;
         }
         await page.waitForSelector(nextButtonSelector, { timeout: DEFAULT_TIMEOUT });
-        const paginationText = await page.$eval('.n7lv7yjyC35__root', el => el.innerText);
+        // const paginationText = await page.$eval('.n7lv7yjyC35__root', el => el.innerText);
+        const paginationText = await page.$eval("[class*='Pagination__root']", el => el.innerText);
         const [fromString, toString] = paginationText.match(/\d+/g);
         const from = parseInt(fromString);
         const to = parseInt(toString);

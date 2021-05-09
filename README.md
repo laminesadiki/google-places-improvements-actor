@@ -1,3 +1,14 @@
+# V3.7 Of Google Places improvements Actor
+
+We will do and fix the following things :
+* scrape multiples lines for city,country,category input with default proxies (English) .
+* scrape multiples pages for city,country,category input with default proxies (English) .
+* enable scraping with french proxies in Place ID input .
+* enable scraping with french proxiew in city,country,categoy input .
+* 
+* 
+
+
 # V3.5 Of Google Places improvements Actor
 
 We will do and fix the following fields :
