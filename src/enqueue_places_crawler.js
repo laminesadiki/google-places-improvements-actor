@@ -130,10 +130,11 @@ const enqueueAllPlaceDetails = async ({ page, requestQueue, input, request }) =>
             await saveScreenshot(page, `${preKey}.png`);
         }
         await page.waitForSelector(nextButtonSelector, { timeout: DEFAULT_TIMEOUT });
+        const noResultSection = await page.$('[class*="_section-no-result"]');
         const isNextPaginationDisabled = await page.evaluate((nextButtonSelector) => {
             return !!$(nextButtonSelector).attr('disabled');
         }, nextButtonSelector);
-        if (isNextPaginationDisabled || (maxCrawledPlaces && maxCrawledPlaces <= to)) {
+        if (noResultSection || isNextPaginationDisabled || (maxCrawledPlaces && maxCrawledPlaces <= to)) {
             break;
         } else {
             // NOTE: puppeteer API click() didn't work :|
