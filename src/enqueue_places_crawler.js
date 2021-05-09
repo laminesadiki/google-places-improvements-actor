@@ -110,7 +110,7 @@ const enqueueAllPlaceDetails = async ({ page, requestQueue, input, request }) =>
     const nextButtonSelector = '[jsaction="pane.paginationSection.nextPage"]';
     while (true) {
         // const noResultsEl = await page.$('.section-no-result-title');
-        const noResultsEl = await page.$('[class*="_section-no-result"]');
+        const noResultsEl = await page.$('[class*="section-no-result"]');
         if (noResultsEl) {
             break;
         }
@@ -131,7 +131,7 @@ const enqueueAllPlaceDetails = async ({ page, requestQueue, input, request }) =>
             await saveScreenshot(page, `${preKey}.png`);
         }
         await page.waitForSelector(nextButtonSelector, { timeout: DEFAULT_TIMEOUT });
-        const noResultSection = await page.$('[class*="_section-no-result"]');
+        const noResultSection = await page.$('[class*="section-no-result"]');
         const isNextPaginationDisabled = await page.evaluate((nextButtonSelector) => {
             return !!$(nextButtonSelector).attr('disabled');
         }, nextButtonSelector);
