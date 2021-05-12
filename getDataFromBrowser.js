@@ -71,6 +71,11 @@ let content = document.querySelectorAll("[class*='section-attribute-group-contai
 //Test pushing
 
 
+// Select A specific element that satisfy an exact element :
+[...document.querySelectorAll(".section-subheader")].filter(el => el.innerText == "Highlights")[0];
+
+
+
 
 
 
