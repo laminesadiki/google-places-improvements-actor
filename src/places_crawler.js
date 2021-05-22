@@ -651,7 +651,8 @@ const setUpCrawler = async ({ requestQueue, input, languageCode, currencyCountry
                 {name: "SSID", value: "AXaG3pGymVB3uTRGs"},
                 {name: "OTZ", value: "5984100_48_52_123900_48_436380"}
                 ];
-
+            log.info(initialCookies);       
+            log.info(request.url);       
             session.setPuppeteerCookies(initialCookies, request.url);
             await page.setCookie(...initialCookies)
 
