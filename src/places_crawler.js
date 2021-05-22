@@ -628,28 +628,29 @@ const setUpCrawler = async ({ requestQueue, input, languageCode, currencyCountry
         },
     };
 
-    const initialCookies = [
-        {name: "__Secure-1PAPISID", value: "O3JFV2vyEw77NVHd/ATas-smhLcqwh1ynl"},
-        {name: "__Secure-1PSID", value: "9gcJFZIAtr0fdNpIAD2VurvS4Mlq5AGsQp16JkTsRdYGKAAsCdc-q6m6yMjwUpA_D1lkFw."},
-        {name: "__Secure-1PSIDCC", value: "AJi4QfHNZN1xEvzJZt0b0UdplYCfXdW81UNwAf4ORruuV5Jpp9HremVF8VDu9UBplkH7Tfiq"},
-        {name: "__Secure-3PAPISID", value: "DgMGvysuTbMwOO54/AGEG1OVpNYYJJodsM"},
-        {name: "__Secure-3PSID", value: "9gcJFWdWr43vAiEJZ_MYDAalXaMJBFYMGyhcF5XELPaWcuH6iFYUiahu31eRdtTU0HhaBg."},
-        {name: "__Secure-3PSIDCC", value: "AJi4QfH2XeG7OYCrWRT9svF9Bf5vYkhlCaRUz2aOaq69eeWydN6hJ4xVA5JeLzwDgSYCh-lD8w"},
-        {name: "1P_JAR", value: "2021-05-22-17"},
-        {name: "APISID", value: "y0NoSXWhhyo1RzXF/A5zlDYTvB2EomXW1v"},
-        {name: "HSID", value: "ASDkKfsQ9aQEb7kWX"},
-        {name: "NID", value: "216=OTUaTOOx5Lkjd9I9UFqcu4i5mpSTjQwuQutdPIiMWRluxG…KyMnEJA8y21lPCvBricNpvckjIKjMSj58RN4v_eSs4v3wBTv0"},
-        {name: "SAPISID", value: "DgMGvysuTbMwOO54/AGEG1OVpNYYJJodsM"},
-        {name: "SEARCH_SAMESITE", value: "CgQIy5IB"},
-        {name: "SID", value: "9gcJFWdWr43vAiEJZ_MYDAalXaMJBFYMGyhcF5XELPaWcuH69qRpETFWbIAmvS7B95uZ9A."},
-        {name: "SIDCC", value: "AJi4QfGn8jRfV3a_2HanCSh181XjZc3DtJlnF_kK7aIpNy5fxsY3KFuNAQbdOEx60JeTE4m5VmQ"},
-        {name: "SSID", value: "AXaG3pGymVB3uTRGs"},
-        {name: "OTZ", value: "5984100_48_52_123900_48_436380"}
-        ];
+    
 
     return new Apify.PuppeteerCrawler({
         ...crawlerOpts,
         gotoFunction: async ({ request, page , session }) => {
+            const initialCookies = [
+                {name: "__Secure-1PAPISID", value: "O3JFV2vyEw77NVHd/ATas-smhLcqwh1ynl"},
+                {name: "__Secure-1PSID", value: "9gcJFZIAtr0fdNpIAD2VurvS4Mlq5AGsQp16JkTsRdYGKAAsCdc-q6m6yMjwUpA_D1lkFw."},
+                {name: "__Secure-1PSIDCC", value: "AJi4QfHNZN1xEvzJZt0b0UdplYCfXdW81UNwAf4ORruuV5Jpp9HremVF8VDu9UBplkH7Tfiq"},
+                {name: "__Secure-3PAPISID", value: "DgMGvysuTbMwOO54/AGEG1OVpNYYJJodsM"},
+                {name: "__Secure-3PSID", value: "9gcJFWdWr43vAiEJZ_MYDAalXaMJBFYMGyhcF5XELPaWcuH6iFYUiahu31eRdtTU0HhaBg."},
+                {name: "__Secure-3PSIDCC", value: "AJi4QfH2XeG7OYCrWRT9svF9Bf5vYkhlCaRUz2aOaq69eeWydN6hJ4xVA5JeLzwDgSYCh-lD8w"},
+                {name: "1P_JAR", value: "2021-05-22-17"},
+                {name: "APISID", value: "y0NoSXWhhyo1RzXF/A5zlDYTvB2EomXW1v"},
+                {name: "HSID", value: "ASDkKfsQ9aQEb7kWX"},
+                {name: "NID", value: "216=OTUaTOOx5Lkjd9I9UFqcu4i5mpSTjQwuQutdPIiMWRluxG…KyMnEJA8y21lPCvBricNpvckjIKjMSj58RN4v_eSs4v3wBTv0"},
+                {name: "SAPISID", value: "DgMGvysuTbMwOO54/AGEG1OVpNYYJJodsM"},
+                {name: "SEARCH_SAMESITE", value: "CgQIy5IB"},
+                {name: "SID", value: "9gcJFWdWr43vAiEJZ_MYDAalXaMJBFYMGyhcF5XELPaWcuH69qRpETFWbIAmvS7B95uZ9A."},
+                {name: "SIDCC", value: "AJi4QfGn8jRfV3a_2HanCSh181XjZc3DtJlnF_kK7aIpNy5fxsY3KFuNAQbdOEx60JeTE4m5VmQ"},
+                {name: "SSID", value: "AXaG3pGymVB3uTRGs"},
+                {name: "OTZ", value: "5984100_48_52_123900_48_436380"}
+                ];
 
             session.setPuppeteerCookies(initialCookies, request.url);
             await page.setCookie(...initialCookies)
