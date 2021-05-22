@@ -175,7 +175,7 @@ const readAndValidateSpreadsheet = async (spreadsheetId, publicSpreadsheet,page)
                 city: City,
                 country: Country,
                 category: Category,
-                searchString: `${Category} in ${City ? `${City}, ` : ''}${Country}`,
+                searchString: `${Category} ${City ? `${City} ` : ''}${Country}`,
             });
         }
     }
