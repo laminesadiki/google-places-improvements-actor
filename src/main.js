@@ -6,8 +6,6 @@ const { readAndValidateSpreadsheet, saveDataToKVS, getValidKey } = require('./ut
 const { log } = Apify.utils;
 
 
-
-
 Apify.main(async () => {
     const browser = await Apify.launchPuppeteer();
     const page = await browser.newPage();
@@ -22,6 +20,8 @@ Apify.main(async () => {
         languageCode,
         currencyCountry,
     } = input;
+
+    global.language_Code = languageCode;
 
     if (debug) {
         log.setLevel(log.LEVELS.DEBUG);

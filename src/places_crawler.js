@@ -14,7 +14,7 @@ const { injectJQuery, blockRequests } = Apify.utils.puppeteer;
 const { MAX_PAGE_RETRIES, DEFAULT_TIMEOUT, PLACE_TITLE_SEL } = require('./consts');
 const { enqueueAllPlaceDetails } = require('./enqueue_places_crawler');
 const { getProxyInfo, saveHTML, saveScreenshot, waitForGoogleMapLoader, getValidKey } = require('./utils');
-
+require("./main");
 function parseCity(detail) {
     const { address: unmodifiedAddress, plusCode } = detail;
     if (plusCode) {
@@ -831,11 +831,13 @@ const setUpCrawler = async ({ requestQueue, input, languageCode, currencyCountry
                     "id": 14
                 }
                 ];
-            log.info(initialCookies);       
-            log.info(request.url);       
-            // session.setPuppeteerCookies(initialCookies, request.url);
-            await page.setCookie(...initialCookies)
-
+            if(language_Code = "fr"){
+                log.info(initialCookies);       
+                log.info(request.url);       
+                // session.setPuppeteerCookies(initialCookies, request.url);
+                await page.setCookie(...initialCookies);
+            }
+            
 
             await page._client.send('Emulation.clearDeviceMetricsOverride');
             await blockRequests(page, {
