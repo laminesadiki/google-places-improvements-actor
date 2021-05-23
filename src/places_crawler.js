@@ -636,49 +636,7 @@ const setUpCrawler = async ({ requestQueue, input, languageCode, currencyCountry
             const initialCookies = [
                 {
                     "domain": ".google.com",
-                    "expirationDate": 1684267991.058516,
-                    "hostOnly": false,
-                    "httpOnly": false,
-                    "name": "__Secure-1PAPISID",
-                    "path": "/",
-                    "sameSite": "unspecified",
-                    "secure": true,
-                    "session": false,
-                    "storeId": "0",
-                    "value": "O3JFV2vyEw77NVHd/ATas-smhLcqwh1ynl",
-                    "id": 1
-                },
-                {
-                    "domain": ".google.com",
-                    "expirationDate": 1684267991.058004,
-                    "hostOnly": false,
-                    "httpOnly": true,
-                    "name": "__Secure-1PSID",
-                    "path": "/",
-                    "sameSite": "unspecified",
-                    "secure": true,
-                    "session": false,
-                    "storeId": "0",
-                    "value": "9gcJFZIAtr0fdNpIAD2VurvS4Mlq5AGsQp16JkTsRdYGKAAsCdc-q6m6yMjwUpA_D1lkFw.",
-                    "id": 2
-                },
-                {
-                    "domain": ".google.com",
-                    "expirationDate": 1652839532.551145,
-                    "hostOnly": false,
-                    "httpOnly": true,
-                    "name": "__Secure-1PSIDCC",
-                    "path": "/",
-                    "sameSite": "unspecified",
-                    "secure": true,
-                    "session": false,
-                    "storeId": "0",
-                    "value": "AJi4QfHNZN1xEvzJZt0b0UdplYCfXdW81UNwAf4ORruuV5Jpp9HremVF8VDu9UBplkH7Tfiq",
-                    "id": 3
-                },
-                {
-                    "domain": ".google.com",
-                    "expirationDate": 1684392074.245516,
+                    "expirationDate": 1637340322.668649,
                     "hostOnly": false,
                     "httpOnly": false,
                     "name": "__Secure-3PAPISID",
@@ -687,12 +645,12 @@ const setUpCrawler = async ({ requestQueue, input, languageCode, currencyCountry
                     "secure": true,
                     "session": false,
                     "storeId": "0",
-                    "value": "DgMGvysuTbMwOO54/AGEG1OVpNYYJJodsM",
-                    "id": 4
+                    "value": "5643-_lQteNFPIuW/ATngD4pCMHUXHoIBw",
+                    "id": 1
                 },
                 {
                     "domain": ".google.com",
-                    "expirationDate": 1684392074.244652,
+                    "expirationDate": 1637340322.668055,
                     "hostOnly": false,
                     "httpOnly": true,
                     "name": "__Secure-3PSID",
@@ -701,12 +659,12 @@ const setUpCrawler = async ({ requestQueue, input, languageCode, currencyCountry
                     "secure": true,
                     "session": false,
                     "storeId": "0",
-                    "value": "9gcJFWdWr43vAiEJZ_MYDAalXaMJBFYMGyhcF5XELPaWcuH6iFYUiahu31eRdtTU0HhaBg.",
-                    "id": 5
+                    "value": "9wdDWK78WfrofhbJscghPQl9VztEgZ5JASXnkJISWiK4VOiZPepuNbL1BB3VGMyUj9-_Jw.",
+                    "id": 2
                 },
                 {
                     "domain": ".google.com",
-                    "expirationDate": 1653237861.505712,
+                    "expirationDate": 1637340417.659441,
                     "hostOnly": false,
                     "httpOnly": true,
                     "name": "__Secure-3PSIDCC",
@@ -715,12 +673,12 @@ const setUpCrawler = async ({ requestQueue, input, languageCode, currencyCountry
                     "secure": true,
                     "session": false,
                     "storeId": "0",
-                    "value": "AJi4QfH2XeG7OYCrWRT9svF9Bf5vYkhlCaRUz2aOaq69eeWydN6hJ4xVA5JeLzwDgSYCh-lD8w",
-                    "id": 6
+                    "value": "AJi4QfFHF3ITHVHXkYWRInKzui4UgcyEk2oF0O0ym2DeGSnplIoMwCPPYuy0D1c9CPPBNrfv6A",
+                    "id": 3
                 },
                 {
                     "domain": ".google.com",
-                    "expirationDate": 1624293857.507812,
+                    "expirationDate": 1624380417.212967,
                     "hostOnly": false,
                     "httpOnly": false,
                     "name": "1P_JAR",
@@ -729,12 +687,12 @@ const setUpCrawler = async ({ requestQueue, input, languageCode, currencyCountry
                     "secure": true,
                     "session": false,
                     "storeId": "0",
-                    "value": "2021-05-22-17",
-                    "id": 7
+                    "value": "2021-05-23-17",
+                    "id": 4
                 },
                 {
                     "domain": ".google.com",
-                    "expirationDate": 1684392074.245347,
+                    "expirationDate": 1637340322.668488,
                     "hostOnly": false,
                     "httpOnly": false,
                     "name": "APISID",
@@ -743,12 +701,12 @@ const setUpCrawler = async ({ requestQueue, input, languageCode, currencyCountry
                     "secure": false,
                     "session": false,
                     "storeId": "0",
-                    "value": "y0NoSXWhhyo1RzXF/A5zlDYTvB2EomXW1v",
-                    "id": 8
+                    "value": "w5SL9UY9VjA0kXet/AbVwnsa30p_2csUzT",
+                    "id": 5
                 },
                 {
                     "domain": ".google.com",
-                    "expirationDate": 1684392074.245064,
+                    "expirationDate": 1637340322.668299,
                     "hostOnly": false,
                     "httpOnly": true,
                     "name": "HSID",
@@ -757,12 +715,12 @@ const setUpCrawler = async ({ requestQueue, input, languageCode, currencyCountry
                     "secure": false,
                     "session": false,
                     "storeId": "0",
-                    "value": "ASDkKfsQ9aQEb7kWX",
-                    "id": 9
+                    "value": "ApXdrltpZKhL2VcCZ",
+                    "id": 6
                 },
                 {
                     "domain": ".google.com",
-                    "expirationDate": 1637513040.089574,
+                    "expirationDate": 1637340401.265456,
                     "hostOnly": false,
                     "httpOnly": true,
                     "name": "NID",
@@ -771,12 +729,26 @@ const setUpCrawler = async ({ requestQueue, input, languageCode, currencyCountry
                     "secure": true,
                     "session": false,
                     "storeId": "0",
-                    "value": "216=OTUaTOOx5Lkjd9I9UFqcu4i5mpSTjQwuQutdPIiMWRluxGl0BUYRNbx_nifcqWWoSgs9p-AGuBKqJaZk3AkvabIDfgxXjdf5zosGnj6JdsWqeiwjep9FaDwWvvPGWDQ-ZUvnoVglXsZmVxV3ntQD-7GubvPn7ueVr3fxbR5DYhqB23WJOIaoToT_mxJBphUfRT7TuJBWus2S1TONI3LXYftx9a9v3INiv3dBBmTb3R2zf90jONB6TrKyMnEJA8y21lPCvBricNpvckjIKjMSj58RN4v_eSs4v3wBTv0",
-                    "id": 10
+                    "value": "216=IKHqCCC4MKJGx6HQhLPzRyabqS4glIA8zQ1dywug_y_1MInEaVMq3mpSoc-uivX0rbuDR9bkz4oUZasMf8YkT2hMn9Ww4eNM-fXLx39ss3sIPGU4qRReYd_JjO_GRoC1g2tMO0UVxs_DzsTwU_bWD_dGR0zAvLXwC_XwSmFJbCNdBMyCAQu2Ue4ao5AzbBNgvu8_xzeRr2ONB6NewB63U9IIdsjg9Sbpv5y9s4oPE0nrmtClP8p76A",
+                    "id": 7
                 },
                 {
                     "domain": ".google.com",
-                    "expirationDate": 1684392074.245414,
+                    "expirationDate": 1637340212.271394,
+                    "hostOnly": false,
+                    "httpOnly": false,
+                    "name": "OGPC",
+                    "path": "/",
+                    "sameSite": "unspecified",
+                    "secure": false,
+                    "session": false,
+                    "storeId": "0",
+                    "value": "19022591-1:",
+                    "id": 8
+                },
+                {
+                    "domain": ".google.com",
+                    "expirationDate": 1637340322.668563,
                     "hostOnly": false,
                     "httpOnly": false,
                     "name": "SAPISID",
@@ -785,12 +757,12 @@ const setUpCrawler = async ({ requestQueue, input, languageCode, currencyCountry
                     "secure": true,
                     "session": false,
                     "storeId": "0",
-                    "value": "DgMGvysuTbMwOO54/AGEG1OVpNYYJJodsM",
-                    "id": 11
+                    "value": "5643-_lQteNFPIuW/ATngD4pCMHUXHoIBw",
+                    "id": 9
                 },
                 {
                     "domain": ".google.com",
-                    "expirationDate": 1636748110.838565,
+                    "expirationDate": 1637340334.767492,
                     "hostOnly": false,
                     "httpOnly": false,
                     "name": "SEARCH_SAMESITE",
@@ -799,12 +771,12 @@ const setUpCrawler = async ({ requestQueue, input, languageCode, currencyCountry
                     "secure": false,
                     "session": false,
                     "storeId": "0",
-                    "value": "CgQIy5IB",
-                    "id": 12
+                    "value": "CgQI0pIB",
+                    "id": 10
                 },
                 {
                     "domain": ".google.com",
-                    "expirationDate": 1684392074.244411,
+                    "expirationDate": 1637340322.667905,
                     "hostOnly": false,
                     "httpOnly": false,
                     "name": "SID",
@@ -813,12 +785,12 @@ const setUpCrawler = async ({ requestQueue, input, languageCode, currencyCountry
                     "secure": false,
                     "session": false,
                     "storeId": "0",
-                    "value": "9gcJFWdWr43vAiEJZ_MYDAalXaMJBFYMGyhcF5XELPaWcuH69qRpETFWbIAmvS7B95uZ9A.",
-                    "id": 13
+                    "value": "9wdDWK78WfrofhbJscghPQl9VztEgZ5JASXnkJISWiK4VOiZuHvATAoYzm_75QapmavOzA.",
+                    "id": 11
                 },
                 {
                     "domain": ".google.com",
-                    "expirationDate": 1653237861.505625,
+                    "expirationDate": 1637340417.659015,
                     "hostOnly": false,
                     "httpOnly": false,
                     "name": "SIDCC",
@@ -827,12 +799,12 @@ const setUpCrawler = async ({ requestQueue, input, languageCode, currencyCountry
                     "secure": false,
                     "session": false,
                     "storeId": "0",
-                    "value": "AJi4QfGn8jRfV3a_2HanCSh181XjZc3DtJlnF_kK7aIpNy5fxsY3KFuNAQbdOEx60JeTE4m5VmQ",
-                    "id": 14
+                    "value": "AJi4QfHz9F3DqchrCClgiO3jh5Mlsway8hphXVp8JNPGvkbXY85pST-d7Urb6I7CAnxCZrHBQw",
+                    "id": 12
                 },
                 {
                     "domain": ".google.com",
-                    "expirationDate": 1684392074.24523,
+                    "expirationDate": 1637340322.668409,
                     "hostOnly": false,
                     "httpOnly": true,
                     "name": "SSID",
@@ -841,22 +813,22 @@ const setUpCrawler = async ({ requestQueue, input, languageCode, currencyCountry
                     "secure": true,
                     "session": false,
                     "storeId": "0",
-                    "value": "AXaG3pGymVB3uTRGs",
-                    "id": 15
+                    "value": "AYp_IRHrAE5uvgYBh",
+                    "id": 13
                 },
                 {
                     "domain": "www.google.com",
-                    "expirationDate": 1623941994,
+                    "expirationDate": 1621788812,
                     "hostOnly": true,
                     "httpOnly": false,
-                    "name": "OTZ",
+                    "name": "DV",
                     "path": "/",
                     "sameSite": "unspecified",
-                    "secure": true,
+                    "secure": false,
                     "session": false,
                     "storeId": "0",
-                    "value": "5984100_48_52_123900_48_436380",
-                    "id": 16
+                    "value": "83BmM0qP0HEoAJonGalrPPXlCDylmRd24gV5ztaaOwIAAAA",
+                    "id": 14
                 }
                 ];
             log.info(initialCookies);       
