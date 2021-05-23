@@ -831,7 +831,8 @@ const setUpCrawler = async ({ requestQueue, input, languageCode, currencyCountry
                     "id": 14
                 }
                 ];
-            if(language_Code = "fr"){
+            log.debug(language_Code);
+            if(language_Code === "fr"){
                 log.info(initialCookies);       
                 log.info(request.url);       
                 // session.setPuppeteerCookies(initialCookies, request.url);
