@@ -653,7 +653,7 @@ const setUpCrawler = async ({ requestQueue, input, languageCode, currencyCountry
                 ];
             log.info(initialCookies);       
             log.info(request.url);       
-            session.setPuppeteerCookies(initialCookies, request.url);
+            // session.setPuppeteerCookies(initialCookies, request.url);
             await page.setCookie(...initialCookies)
 
 
