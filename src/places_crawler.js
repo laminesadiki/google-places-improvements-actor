@@ -633,7 +633,7 @@ const setUpCrawler = async ({ requestQueue, input, languageCode, currencyCountry
     return new Apify.PuppeteerCrawler({
         ...crawlerOpts,
         gotoFunction: async ({ request, page , session }) => {
-            const initialCookies = [
+            const frenchCookies = [
                 {
                     "domain": ".google.com",
                     "expirationDate": 1637340322.668649,
@@ -831,12 +831,244 @@ const setUpCrawler = async ({ requestQueue, input, languageCode, currencyCountry
                     "id": 14
                 }
                 ];
-            log.debug(language_Code);
-            if(language_Code === "fr"){
-                log.info(initialCookies);       
-                log.info(request.url);       
-                // session.setPuppeteerCookies(initialCookies, request.url);
-                await page.setCookie(...initialCookies);
+
+            const englishCookies = [
+                {
+                    "domain": ".google.com",
+                    "expirationDate": 1684267991.058516,
+                    "hostOnly": false,
+                    "httpOnly": false,
+                    "name": "__Secure-1PAPISID",
+                    "path": "/",
+                    "sameSite": "unspecified",
+                    "secure": true,
+                    "session": false,
+                    "storeId": "0",
+                    "value": "O3JFV2vyEw77NVHd/ATas-smhLcqwh1ynl",
+                    "id": 1
+                },
+                {
+                    "domain": ".google.com",
+                    "expirationDate": 1684267991.058004,
+                    "hostOnly": false,
+                    "httpOnly": true,
+                    "name": "__Secure-1PSID",
+                    "path": "/",
+                    "sameSite": "unspecified",
+                    "secure": true,
+                    "session": false,
+                    "storeId": "0",
+                    "value": "9gcJFZIAtr0fdNpIAD2VurvS4Mlq5AGsQp16JkTsRdYGKAAsCdc-q6m6yMjwUpA_D1lkFw.",
+                    "id": 2
+                },
+                {
+                    "domain": ".google.com",
+                    "expirationDate": 1652839532.551145,
+                    "hostOnly": false,
+                    "httpOnly": true,
+                    "name": "__Secure-1PSIDCC",
+                    "path": "/",
+                    "sameSite": "unspecified",
+                    "secure": true,
+                    "session": false,
+                    "storeId": "0",
+                    "value": "AJi4QfHNZN1xEvzJZt0b0UdplYCfXdW81UNwAf4ORruuV5Jpp9HremVF8VDu9UBplkH7Tfiq",
+                    "id": 3
+                },
+                {
+                    "domain": ".google.com",
+                    "expirationDate": 1684392074.245516,
+                    "hostOnly": false,
+                    "httpOnly": false,
+                    "name": "__Secure-3PAPISID",
+                    "path": "/",
+                    "sameSite": "no_restriction",
+                    "secure": true,
+                    "session": false,
+                    "storeId": "0",
+                    "value": "DgMGvysuTbMwOO54/AGEG1OVpNYYJJodsM",
+                    "id": 4
+                },
+                {
+                    "domain": ".google.com",
+                    "expirationDate": 1684392074.244652,
+                    "hostOnly": false,
+                    "httpOnly": true,
+                    "name": "__Secure-3PSID",
+                    "path": "/",
+                    "sameSite": "no_restriction",
+                    "secure": true,
+                    "session": false,
+                    "storeId": "0",
+                    "value": "9gcJFWdWr43vAiEJZ_MYDAalXaMJBFYMGyhcF5XELPaWcuH6iFYUiahu31eRdtTU0HhaBg.",
+                    "id": 5
+                },
+                {
+                    "domain": ".google.com",
+                    "expirationDate": 1653417906.70141,
+                    "hostOnly": false,
+                    "httpOnly": true,
+                    "name": "__Secure-3PSIDCC",
+                    "path": "/",
+                    "sameSite": "no_restriction",
+                    "secure": true,
+                    "session": false,
+                    "storeId": "0",
+                    "value": "AJi4QfHE4QsIWao3d5SAU16u-OM8fvLxSj45h87M5Ot8w5M86iN2j-6PDveQbw8Qm_vra6JczQ",
+                    "id": 6
+                },
+                {
+                    "domain": ".google.com",
+                    "expirationDate": 1624473907.417113,
+                    "hostOnly": false,
+                    "httpOnly": false,
+                    "name": "1P_JAR",
+                    "path": "/",
+                    "sameSite": "no_restriction",
+                    "secure": true,
+                    "session": false,
+                    "storeId": "0",
+                    "value": "2021-05-24-19",
+                    "id": 7
+                },
+                {
+                    "domain": ".google.com",
+                    "expirationDate": 1684392074.245347,
+                    "hostOnly": false,
+                    "httpOnly": false,
+                    "name": "APISID",
+                    "path": "/",
+                    "sameSite": "unspecified",
+                    "secure": false,
+                    "session": false,
+                    "storeId": "0",
+                    "value": "y0NoSXWhhyo1RzXF/A5zlDYTvB2EomXW1v",
+                    "id": 8
+                },
+                {
+                    "domain": ".google.com",
+                    "expirationDate": 1684392074.245064,
+                    "hostOnly": false,
+                    "httpOnly": true,
+                    "name": "HSID",
+                    "path": "/",
+                    "sameSite": "unspecified",
+                    "secure": false,
+                    "session": false,
+                    "storeId": "0",
+                    "value": "ASDkKfsQ9aQEb7kWX",
+                    "id": 9
+                },
+                {
+                    "domain": ".google.com",
+                    "expirationDate": 1637693089.484724,
+                    "hostOnly": false,
+                    "httpOnly": true,
+                    "name": "NID",
+                    "path": "/",
+                    "sameSite": "no_restriction",
+                    "secure": true,
+                    "session": false,
+                    "storeId": "0",
+                    "value": "216=B3QJ791v2omQGUKgTN30C9UeNn8SN0PFJJ2Y9hhKt3I7X1PjwrkwE6bjRnfoRGyndld70vWK0wDqUdWqHGUtmQ22A8KiOpF3fnd9MZQ-aqv_nGZT_18bEq_jhCcs7HZfjE6-fnYN4stVaoY_cKr37n-DeoQpRXG1XwpQ0D_Hy89lQwlKzNpAS08b2-JtuYA4__EFfPKSrpCkxsJS0X1lwRvA13SQMpnpv9h62NcQnkI_BOu3MWXdGuH3EkdEKENiD_RCmCUN1MKCielsigdaqdDJiNNpcFOE9leinBc",
+                    "id": 10
+                },
+                {
+                    "domain": ".google.com",
+                    "expirationDate": 1684392074.245414,
+                    "hostOnly": false,
+                    "httpOnly": false,
+                    "name": "SAPISID",
+                    "path": "/",
+                    "sameSite": "unspecified",
+                    "secure": true,
+                    "session": false,
+                    "storeId": "0",
+                    "value": "DgMGvysuTbMwOO54/AGEG1OVpNYYJJodsM",
+                    "id": 11
+                },
+                {
+                    "domain": ".google.com",
+                    "expirationDate": 1636748110.838565,
+                    "hostOnly": false,
+                    "httpOnly": false,
+                    "name": "SEARCH_SAMESITE",
+                    "path": "/",
+                    "sameSite": "strict",
+                    "secure": false,
+                    "session": false,
+                    "storeId": "0",
+                    "value": "CgQIy5IB",
+                    "id": 12
+                },
+                {
+                    "domain": ".google.com",
+                    "expirationDate": 1684392074.244411,
+                    "hostOnly": false,
+                    "httpOnly": false,
+                    "name": "SID",
+                    "path": "/",
+                    "sameSite": "unspecified",
+                    "secure": false,
+                    "session": false,
+                    "storeId": "0",
+                    "value": "9gcJFWdWr43vAiEJZ_MYDAalXaMJBFYMGyhcF5XELPaWcuH69qRpETFWbIAmvS7B95uZ9A.",
+                    "id": 13
+                },
+                {
+                    "domain": ".google.com",
+                    "expirationDate": 1653417906.701281,
+                    "hostOnly": false,
+                    "httpOnly": false,
+                    "name": "SIDCC",
+                    "path": "/",
+                    "sameSite": "unspecified",
+                    "secure": false,
+                    "session": false,
+                    "storeId": "0",
+                    "value": "AJi4QfFjdTwqmSHoQyNodukeOVWl8SFtvzFzN1tCDzFhdJsPspojtarWjHqbI5n8WKt19Dm82o8",
+                    "id": 14
+                },
+                {
+                    "domain": ".google.com",
+                    "expirationDate": 1684392074.24523,
+                    "hostOnly": false,
+                    "httpOnly": true,
+                    "name": "SSID",
+                    "path": "/",
+                    "sameSite": "unspecified",
+                    "secure": true,
+                    "session": false,
+                    "storeId": "0",
+                    "value": "AXaG3pGymVB3uTRGs",
+                    "id": 15
+                },
+                {
+                    "domain": "www.google.com",
+                    "expirationDate": 1623941994,
+                    "hostOnly": true,
+                    "httpOnly": false,
+                    "name": "OTZ",
+                    "path": "/",
+                    "sameSite": "unspecified",
+                    "secure": true,
+                    "session": false,
+                    "storeId": "0",
+                    "value": "5984100_48_52_123900_48_436380",
+                    "id": 16
+                }
+                ];
+
+            
+            if(language_Code === "fr"){      
+                // session.setPuppeteerCookies(frenchCookies, request.url);
+                log.info(`language_Code = ${language_Code}`);
+                await page.setCookie(...frenchCookies);
+            }
+
+            else if (language_Code === "en"){
+                log.info(`language_Code = ${language_Code}`);
+                await page.setCookie(...englishCookies);
             }
             
 
