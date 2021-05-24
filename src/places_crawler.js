@@ -444,7 +444,7 @@ const extractPlaceDetail = async ({ page, request }) => {
     // Get stars per number of reviews <=> starsPerReviews
     let reviewsArray = await page.evaluate(() => {
         try {
-            let reviewsDomList = [...document.querySelectorAll("tr[class*='histogram']")];
+            let reviewsDomList = [...document.querySelectorAll("tr[class*='histogram'],.BHOKXe")];
             let reviews = reviewsDomList.map(el => {
             let str =  el.getAttribute("aria-label");
             let list = str.split(", ");
