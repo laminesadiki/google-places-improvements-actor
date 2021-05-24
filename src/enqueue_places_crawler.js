@@ -112,7 +112,8 @@ const enqueueAllPlaceDetails = async ({ page, requestQueue, input, request }) =>
         // const noResultsEl = await page.$('.section-no-result-title');
         const noResultsEl = await page.$('[class*="section-no-result"]');
         if (noResultsEl) {
-            break;
+            // break;
+            return;
         }
         await page.waitForSelector(nextButtonSelector, { timeout: DEFAULT_TIMEOUT });
         // const paginationText = await page.$eval('.n7lv7yjyC35__root', el => el.innerText);
@@ -136,7 +137,8 @@ const enqueueAllPlaceDetails = async ({ page, requestQueue, input, request }) =>
             return !!$(nextButtonSelector).attr('disabled');
         }, nextButtonSelector);
         if (noResultSection || isNextPaginationDisabled || (maxCrawledPlaces && maxCrawledPlaces <= to)) {
-            break;
+            // break;
+            return;
         } else {
             // NOTE: puppeteer API click() didn't work :|
             await page.evaluate(sel => $(sel).click(), nextButtonSelector);
