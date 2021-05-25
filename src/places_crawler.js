@@ -296,7 +296,7 @@ const extractPlaceDetail = async ({ page, request }) => {
         // await page.waitForSelector("div[class*='Hoteljustification__text']");
         // await page.waitForNavigation();
         let pointsfortsList = await page.evaluate(() => {
-            let pointsFortsDOM = [...document.querySelectorAll("div[class*='Hoteljustification__text']")].map(el => el.innerText);
+            let pointsFortsDOM = [...document.querySelectorAll("div[class*='Hoteljustification__text'],.NovK6")].map(el => el.innerText);
             return pointsFortsDOM;
         });
         pointsforts=pointsfortsList;
