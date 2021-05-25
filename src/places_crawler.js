@@ -223,15 +223,15 @@ const extractPlaceDetail = async ({ page, request }) => {
            
         }
         const hotelsAds = await page.evaluate(() => {
-            const $adsInfo = $('.section-hotel-prices-section ,[class*="partner-container"]');
+            const $adsInfo = $('.section-hotel-prices-section ,[class*="partner-container"],.tYkrzb-haAclf');
             const hotelsAds = [];
             $adsInfo.each((index, el) => {
                 const name = $(el)
-                    .find('[class*="partner-name-container"]')
+                    .find('[class*="partner-name-container"],span.tYkrzb-V1ur5d')
                     .text()
                     .trim();
                 const price = $(el)
-                    .find('[class*="primary-display-price-text"]')
+                    .find('[class*="primary-display-price-text"],div.kq6Nvd-qCDwBb-text')
                     .text()
                     .trim();
                 hotelsAds.push({
