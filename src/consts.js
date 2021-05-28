@@ -348,4 +348,4 @@ exports.CURRENCY_COUNTRIES = [
 ];
 
 
-exports.PLACE_TITLE_SEL = 'h1.section-hero-header-title-title';
+exports.PLACE_TITLE_SEL = "h1.section-hero-header-title-title,h1[class*='header-title-title']";
