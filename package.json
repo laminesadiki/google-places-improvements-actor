@@ -21,7 +21,7 @@
     "google",
     "places"
   ],
-  "author": "Jakub Drobnik <drobnik.j@gmail.com>",
+  "author": "ayoub",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/drobnikj/crawler-google-places/issues"
